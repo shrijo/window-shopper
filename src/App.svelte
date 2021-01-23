@@ -4,6 +4,7 @@
 	let title = 'Title';
 	let price = 'Price';
 	let text = 'Lorem dolor sit amet.';
+	let link = 'http://google.com';
 
 </script>
 
@@ -18,7 +19,7 @@
 			<label for="text">Text</label>
 		  <input type="text" id="text" name="text" bind:value={text}>
 			<label for="link">Link to</label>
-		  <input type="text" id="link" name="link">
+		  <input type="text" id="link" name="link" bind:value={link}>
 		</form>
 	</div>
 
@@ -27,7 +28,7 @@
 			<h2>{title}</h2>
 			<h4>{price}</h4>
 			<p>{text}</p>
-			<QrCode value="www.google.com" />
+			<QrCode bind:value={link} />
 		</div>
 	</div>
 </main>

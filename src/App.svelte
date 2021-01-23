@@ -6,7 +6,11 @@
 	import QRCode from "./components/QRCode.svelte";
 
 	let title = 'Title';
-	let price = 'Price';
+	let price = 100;
+	$: priceView = new Intl
+		.NumberFormat('ch-DE', { style: 'currency', currency: 'CHF' })
+		.format(parseFloat(price, 10))
+	
 	let text = 'Lorem dolor sit amet.';
 	let image = false;
 	let link = 'http://google.com';
@@ -32,7 +36,7 @@
 	<div id="preview">
 		<div id="paper">
 			<h2>{title}</h2>
-			<h4>{price}</h4>
+			<h4>{priceView}</h4>
 			<p>{text}</p>
 			<OptionalImage bind:image/>
 			<QRCode bind:value={link} />

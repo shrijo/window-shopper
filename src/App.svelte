@@ -1,8 +1,9 @@
 <script>
-	import QrCode from "svelte-qrcode"
+	// import QrCode from "svelte-qrcode"
 
 	import ImageUpload from "./components/ImageUpload.svelte";
 	import OptionalImage from "./components/OptionalImage.svelte";
+	import QRCode from "./components/QRCode.svelte";
 
 	let title = 'Title';
 	let price = 'Price';
@@ -34,7 +35,7 @@
 			<h4>{price}</h4>
 			<p>{text}</p>
 			<OptionalImage bind:image/>
-			<QrCode bind:value={link} />
+			<QRCode bind:value={link} />
 		</div>
 	</div>
 </main>
@@ -50,6 +51,18 @@
 		display: flex;
 	}
 
+	:global(label){
+		font-size: 0.8em;
+		color: #a1a1a1;
+		margin-bottom: 3px;
+	}
+
+	:global(input){
+		width: 100%;
+		background-color: #efefef;
+		border: none;
+	}
+
 	#editor{
 		padding: 20px;
 		flex-grow: 2;
@@ -61,17 +74,6 @@
 		align-items: stretch;
 	}
 
-	label{
-		font-size: 0.8em;
-		color: #a1a1a1;
-		margin-bottom: 3px;
-	}
-
-	input{
-		width: 100%;
-		background-color: #efefef;
-		border: none;
-	}
 
 	#preview{
 		flex-grow: 10;

@@ -25,17 +25,3 @@
   >
 </label>
 
-<style>
-  	label{
-		font-size: 0.8em;
-		color: #a1a1a1;
-		margin-bottom: 3px;
-	}
-
-  input {
-		width: 100%;
-		background-color: #efefef;
-		border: none;
-  }
-</style>
-

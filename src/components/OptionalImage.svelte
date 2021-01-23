@@ -5,11 +5,11 @@
 {#if image}
   <img src="{image}" alt="d" />
 {:else}
-  <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="" /> 
+  <img src="https://via.placeholder.com/150/0000FF/FFFFFF" alt="" /> 
 {/if}
 
 <style>
   img {
-    max-width: 100%;
+    width: 100%;
   }
 </style>

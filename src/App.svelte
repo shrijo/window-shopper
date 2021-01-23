@@ -1,9 +1,13 @@
 <script>
 	import QrCode from "svelte-qrcode"
 
+	import ImageUpload from "./components/ImageUpload.svelte";
+	import OptionalImage from "./components/OptionalImage.svelte";
+
 	let title = 'Title';
 	let price = 'Price';
 	let text = 'Lorem dolor sit amet.';
+	let image = false;
 	let link = 'http://google.com';
 
 </script>
@@ -18,6 +22,7 @@
 		  <input type="text" id="price" name="price" bind:value={price}>
 			<label for="text">Text</label>
 		  <input type="text" id="text" name="text" bind:value={text}>
+			<ImageUpload bind:value={image}/>
 			<label for="link">Link to</label>
 		  <input type="text" id="link" name="link" bind:value={link}>
 		</form>
@@ -28,6 +33,7 @@
 			<h2>{title}</h2>
 			<h4>{price}</h4>
 			<p>{text}</p>
+			<OptionalImage bind:image/>
 			<QrCode bind:value={link} />
 		</div>
 	</div>

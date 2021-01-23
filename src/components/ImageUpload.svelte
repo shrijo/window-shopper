@@ -9,15 +9,12 @@
 
 		reader.onload = e => {
       value = e.target.result;
-      console.log(e);
     };
   };
 </script>
 
 
-<label
-  on:click={fileinput.click}
->
+<label>
   Choose Image
   <input
     name="file-input"
@@ -29,7 +26,13 @@
 </label>
 
 <style>
-  .chan {
+  	label{
+		font-size: 0.8em;
+		color: #a1a1a1;
+		margin-bottom: 3px;
+	}
+
+  input {
 		width: 100%;
 		background-color: #efefef;
 		border: none;

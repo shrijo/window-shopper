@@ -9,9 +9,12 @@
 	let title = 'Title';
 	let price = 'CHF 1,000.00';
 
-	let text = 'Lorem dolor sit amet.';
+	let text = '';
+	let textPlaceholder = 'Produkt beschreiben';
+	let textFallback = 'Hier können sie ihr Produkt beschreiben';
+
 	let image = false;
-	let link = 'http://google.com';
+	let link = 'http://example.com';
 	
 	const onPrint = () => {
 		window.print()
@@ -24,11 +27,11 @@
 		<h1>Window Shopper</h1>
 		<form>
 			<label for="title">Product</label>
-			<input type="text" id="title" name="title" bind:value={title}>
+			<input title='hello' type="text" id="title" name="title" bind:value={title}>
 			<label for="price">Price</label>
 			<input type="text" id="price" name="price" bind:value={price}>
 			<label for="text">Description</label>
-			<input type="text" id="text" name="text" bind:value={text}>
+			<textarea name="description" id="desc" placeholder={textPlaceholder} cols="30" rows="10" bind:value={text}></textarea>
 			<ImageUpload bind:value={image}/>
 			<label for="link">Link to</label>
 			<input type="text" id="link" name="link" bind:value={link}>
@@ -42,7 +45,7 @@
 				<div class="text">
 					<h2>{title}</h2>
 					<h4>{price}</h4>
-					<p>{text}</p>
+					<p>{text || textFallback}</p>
 				</div>
 				<QRCode bind:value={link} />
 			</section>
@@ -69,7 +72,8 @@
 		margin-bottom: 3px;
 	}
 
-	:global(input){
+	:global(input),
+	:global(textarea) {
 		width: 100%;
 		background-color: #efefef;
 		border: none;

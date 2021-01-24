@@ -17,6 +17,13 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 
 	let image = false;
 	let link = 'http://example.com';
+
+	let linkOption = 0;
+	let linkOptions = [
+		{text: 'Link'},
+		{text: 'Email'},
+		{text: 'SMS'},
+	]
 	
 	const onPrint = () => {
 		window.print()
@@ -32,7 +39,22 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 			<LabeledInput label="Preis" placeholder="Produkt Preis" bind:value={price}/>
 			<LabeledTextarea label="Description" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
+
+			<div style="display:flex;flex-direction:row;justify-content:space-between;">
+				{#each linkOptions as option, index}
+					<label>
+						<input
+							type="radio"
+							bind:group={linkOption}
+							value={index}
+						>
+							{option.text}
+					</label>
+				{/each}
+			</div>
+
 			<LabeledInput label="Link to" placeholder="http://example.com" bind:value={link}/>
+
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 	</div>

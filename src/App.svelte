@@ -5,15 +5,25 @@
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
 
+	let zoomLevel = 0.2;
+
 	let title = 'Title';
 	let price = 100;
 	$: priceView = new Intl
 		.NumberFormat('ch-DE', { style: 'currency', currency: 'CHF' })
 		.format(parseFloat(price, 10))
-	
+
 	let text = 'Lorem dolor sit amet.';
 	let image = false;
 	let link = 'http://google.com';
+
+	function zoomOut(){
+	 zoomLevel -=0.05
+	};
+
+	function zoomIn(){
+		zoomLevel +=0.05
+	};
 
 </script>
 
@@ -34,12 +44,25 @@
 	</div>
 
 	<div id="preview">
-		<div id="paper">
-			<h2>{title}</h2>
-			<h4>{priceView}</h4>
-			<p>{text}</p>
-			<OptionalImage bind:image/>
-			<QRCode bind:value={link} />
+
+		<div id="preview-toolbar">
+			<button type="button" class="zoom-button" on:click={zoomOut}>-</button>
+			<p id="zoom-level">{zoomLevel}</p>
+			<button type="button" class="zoom-button" on:click={zoomIn}>+</button>
+		</div>
+
+		<div id="preview-area">
+			<div id="paper" style="transform: scale({zoomLevel})">
+				<h2>{title}</h2>
+				<h4>{priceView}</h4>
+				<p>{text}</p>
+				<OptionalImage bind:image/>
+				<QRCode bind:value={link} />
+			</div>
+		</div>
+
+		<div id="preview-actionbar">
+			<button id="print">Print</button>
 		</div>
 	</div>
 </main>
@@ -53,6 +76,7 @@
 		padding: 0;
 		margin: 0 auto;
 		display: flex;
+		overflow: hidden;
 	}
 
 	:global(label){
@@ -68,34 +92,66 @@
 	}
 
 	#editor{
+		width: 20vw;
 		padding: 20px;
-		flex-grow: 2;
 	}
 
 	form{
 		margin-top: 20px;
-		flex-direction: column;
-		align-items: stretch;
 	}
 
 
 	#preview{
-		flex-grow: 10;
 		background-color: #efefef;
 		border-left: 1px solid #d4d4d4;
-		display:flex;
-		align-items: center;
-		justify-content: center;
+		width: 80vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#preview-toolbar{
+		height: 40px;
+		padding: 10px;
+		border-bottom: 1px solid #d4d4d4;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.zoom-button{
+		width: 40px;
+		height: 40px;
+	}
+
+	#zoom-level{
+		width: auto;
+		line-height: 40px;
+		margin: 0 10px;
+	}
+
+	#preview-area{
+		background-color: #efefef;
+		overflow: scroll;
+		height: 100vh;
 	}
 
 	#paper{
-		width: 80%;
-		aspect-ratio: 0.71;
 		background-color: #ffffff;
 		padding: 10px;
 		-webkit-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		-moz-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
+		transition: transform ease 0.2s;
+	}
+
+	#preview-actionbar{
+		height: 40px;
+		border-top: 1px solid #d4d4d4;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 10px;
 	}
 
 	h1 {

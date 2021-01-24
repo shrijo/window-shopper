@@ -108,5 +108,10 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 	}
 	.text {
 		flex-grow: 1;
+		margin-right: 2rem;
+	}
+
+	.text p {
+		text-align: justify;
 	}
 </style>

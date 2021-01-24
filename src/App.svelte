@@ -4,12 +4,12 @@
 	import ImageUpload from "./components/ImageUpload.svelte";
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
+	import A4 from "./components/A4.svelte";
+
+	let zoomLevel = 1;
 
 	let title = 'Title';
-	let price = 100;
-	$: priceView = new Intl
-		.NumberFormat('ch-DE', { style: 'currency', currency: 'CHF' })
-		.format(parseFloat(price, 10))
+	let price = 'CHF 1,000.00';
 
 	let text = 'Lorem dolor sit amet.';
 	let image = false;
@@ -34,15 +34,18 @@
 	</div>
 
 	<div id="preview">
-			<div id="paper">
-				<h2>{title}</h2>
-				<h4>{priceView}</h4>
-				<p>{text}</p>
-				<OptionalImage bind:image/>
+		<A4>
+			<OptionalImage bind:image/>
+			<section>
+				<div class="text">
+					<h2>{title}</h2>
+					<h4>{price}</h4>
+					<p>{text}</p>
+				</div>
 				<QRCode bind:value={link} />
-			</div>
+			</section>
+		</A4>
 	</div>
-
 </main>
 
 <style>
@@ -53,8 +56,8 @@
 		margin: 0;
 		padding: 0;
 		margin: 0 auto;
-		display: flex;
-		overflow: hidden;
+		display: grid;
+		grid-template-columns: 1fr 4fr;
 	}
 
 	:global(label){
@@ -68,33 +71,23 @@
 		background-color: #efefef;
 		border: none;
 	}
-
-	#editor{
-		width: 20vw;
-		padding: 20px;
-	}
-
 	form{
 		margin-top: 20px;
 	}
-
+	
+	#editor{
+		box-sizing: border-box;
+		height: 100vh;
+		padding: 20px;
+	}
 
 	#preview{
 		background-color: #efefef;
 		border-left: 1px solid #d4d4d4;
-		width: 80vw;
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
-	}
-
-	#paper{
-		background-color: #ffffff;
-		padding: 10px;
-		-webkit-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
-		-moz-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
-		box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
-		transition: transform ease 0.2s;
+		align-items: center;
+		justify-content: center;
 	}
 
 	h1 {
@@ -103,6 +96,13 @@
 		text-transform: uppercase;
 		font-size: 2em;
 		font-weight: 600;
+	}
+	section {
+		display: flex;
+		margin-top: auto;
+	}
+	.text {
+		flex-grow: 1;
 	}
 
 

@@ -6,11 +6,8 @@
 </svelte:head>
 
 <script>
-  import { onMount } from "svelte";
-	
 	export let value;
   let squareSize = 300;
-  let code;
   let ref;
 
   const update = x => {
@@ -29,13 +26,5 @@
     update(value);
   };
 </script>
-
-<style>
-  div {
-    width:20px;
-    height:200x;
-    margin-top:15px;
-  }
-</style>
 
 <div bind:this={ref}></div>

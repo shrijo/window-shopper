@@ -6,33 +6,35 @@
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
 
-	let zoomLevel = 1;
-
 	let title = 'Title';
 	let price = 'CHF 1,000.00';
 
 	let text = 'Lorem dolor sit amet.';
 	let image = false;
 	let link = 'http://google.com';
-
+	
+	const onPrint = () => {
+		window.print()
+	};
 </script>
+
 
 <main>
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-		  <label for="title">Product</label>
-		  <input type="text" id="title" name="title" bind:value={title}>
+			<label for="title">Product</label>
+			<input type="text" id="title" name="title" bind:value={title}>
 			<label for="price">Price</label>
-		  <input type="text" id="price" name="price" bind:value={price}>
+			<input type="text" id="price" name="price" bind:value={price}>
 			<label for="text">Description</label>
-		  <input type="text" id="text" name="text" bind:value={text}>
+			<input type="text" id="text" name="text" bind:value={text}>
 			<ImageUpload bind:value={image}/>
 			<label for="link">Link to</label>
-		  <input type="text" id="link" name="link" bind:value={link}>
+			<input type="text" id="link" name="link" bind:value={link}>
+			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 	</div>
-
 	<div id="preview">
 		<A4>
 			<OptionalImage bind:image/>
@@ -47,6 +49,7 @@
 		</A4>
 	</div>
 </main>
+
 
 <style>
 	main {
@@ -104,6 +107,4 @@
 	.text {
 		flex-grow: 1;
 	}
-
-
 </style>

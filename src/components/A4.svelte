@@ -16,7 +16,7 @@
 		-webkit-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		-moz-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
-  }  
+  }
 </style>
 
 <div class="A4">

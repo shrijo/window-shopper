@@ -7,6 +7,8 @@
   img {
     width:100%;
     height:auto;
+    max-height: 70%;
+    object-fit: cover;
   }
 </style>
 

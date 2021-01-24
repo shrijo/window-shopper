@@ -78,13 +78,13 @@
 		margin-top: 20px;
 	}
 	
-	#editor{
+	#editor {
 		box-sizing: border-box;
 		height: 100vh;
 		padding: 20px;
 	}
 
-	#preview{
+	#preview {
 		background-color: #efefef;
 		border-left: 1px solid #d4d4d4;
 		display: flex;

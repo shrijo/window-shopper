@@ -5,8 +5,6 @@
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
 
-	let zoomLevel = 0.2;
-
 	let title = 'Title';
 	let price = 100;
 	$: priceView = new Intl
@@ -17,25 +15,17 @@
 	let image = false;
 	let link = 'http://google.com';
 
-	function zoomOut(){
-	 zoomLevel -=0.05
-	};
-
-	function zoomIn(){
-		zoomLevel +=0.05
-	};
-
 </script>
 
 <main>
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-		  <label for="title">Title</label>
+		  <label for="title">Product</label>
 		  <input type="text" id="title" name="title" bind:value={title}>
 			<label for="price">Price</label>
 		  <input type="text" id="price" name="price" bind:value={price}>
-			<label for="text">Text</label>
+			<label for="text">Description</label>
 		  <input type="text" id="text" name="text" bind:value={text}>
 			<ImageUpload bind:value={image}/>
 			<label for="link">Link to</label>
@@ -44,27 +34,15 @@
 	</div>
 
 	<div id="preview">
-
-		<div id="preview-toolbar">
-			<button type="button" class="zoom-button" on:click={zoomOut}>-</button>
-			<p id="zoom-level">{zoomLevel}</p>
-			<button type="button" class="zoom-button" on:click={zoomIn}>+</button>
-		</div>
-
-		<div id="preview-area">
-			<div id="paper" style="transform: scale({zoomLevel})">
+			<div id="paper">
 				<h2>{title}</h2>
 				<h4>{priceView}</h4>
 				<p>{text}</p>
 				<OptionalImage bind:image/>
 				<QRCode bind:value={link} />
 			</div>
-		</div>
-
-		<div id="preview-actionbar">
-			<button id="print">Print</button>
-		</div>
 	</div>
+
 </main>
 
 <style>
@@ -110,32 +88,6 @@
 		flex-direction: column;
 	}
 
-	#preview-toolbar{
-		height: 40px;
-		padding: 10px;
-		border-bottom: 1px solid #d4d4d4;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-	}
-
-	.zoom-button{
-		width: 40px;
-		height: 40px;
-	}
-
-	#zoom-level{
-		width: auto;
-		line-height: 40px;
-		margin: 0 10px;
-	}
-
-	#preview-area{
-		background-color: #efefef;
-		overflow: scroll;
-		height: 100vh;
-	}
-
 	#paper{
 		background-color: #ffffff;
 		padding: 10px;
@@ -143,15 +95,6 @@
 		-moz-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		transition: transform ease 0.2s;
-	}
-
-	#preview-actionbar{
-		height: 40px;
-		border-top: 1px solid #d4d4d4;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		padding: 10px;
 	}
 
 	h1 {

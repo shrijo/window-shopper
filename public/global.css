@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Heebo';
+  src: url('Heebo-VariableFont_wght')  format('truetype'), /* Safari, Android, iOS */
+}
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -9,7 +14,7 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: 'Heebo';
 }
 
 main{
@@ -69,4 +74,8 @@ button:focus {
 
 h1, h2, h3, h4{
 	margin: 0;
+}
+
+h1{
+	line-height: 1em;
 }

@@ -5,8 +5,10 @@
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
+	import LabeledInput from "./components/LabeledInput.svelte";
+import LabeledTextarea from "./components/LabeledTextarea.svelte";
 
-	let title = 'Title';
+	let title = 'Titel';
 	let price = 'CHF 1,000.00';
 
 	let text = '';
@@ -26,15 +28,11 @@
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-			<label for="title">Product</label>
-			<input title='hello' type="text" id="title" name="title" bind:value={title}>
-			<label for="price">Price</label>
-			<input type="text" id="price" name="price" bind:value={price}>
-			<label for="text">Description</label>
-			<textarea name="description" id="desc" placeholder={textPlaceholder} cols="30" rows="10" bind:value={text}></textarea>
+			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={title}/>
+			<LabeledInput label="Preis" placeholder="Produkt Preis" bind:value={price}/>
+			<LabeledTextarea label="Description" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
-			<label for="link">Link to</label>
-			<input type="text" id="link" name="link" bind:value={link}>
+			<LabeledInput label="Link to" placeholder="http://example.com" bind:value={link}/>
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 	</div>

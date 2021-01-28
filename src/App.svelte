@@ -9,14 +9,14 @@
 import LabeledTextarea from "./components/LabeledTextarea.svelte";
 
 	let title = 'Titel';
-	let price = 'CHF 1,000.00';
+	let price = 'CHF 1000.—';
 
 	let text = '';
 	let textPlaceholder = 'Produkt beschreiben';
 	let textFallback = 'Hier können sie ihr Produkt beschreiben';
 
 	let image = false;
-	let link = 'http://example.com';
+	let link = 'https://example.com';
 	
 	const onPrint = () => {
 		window.print()
@@ -29,10 +29,10 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 		<h1>Window Shopper</h1>
 		<form>
 			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={title}/>
-			<LabeledInput label="Preis" placeholder="Produkt Preis" bind:value={price}/>
-			<LabeledTextarea label="Description" placeholder={textPlaceholder} bind:value={text}/>
+			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={price}/>
+			<LabeledTextarea label="Text" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
-			<LabeledInput label="Link to" placeholder="http://example.com" bind:value={link}/>
+			<LabeledInput label="QR Code" placeholder="https://example.com" bind:value={link}/>
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 	</div>
@@ -43,7 +43,7 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 				<div class="text">
 					<h2>{title}</h2>
 					<h4>{price}</h4>
-					<p>{text || textFallback}</p>
+					<p class="description">{text || textFallback}</p>
 				</div>
 				<QRCode bind:value={link} />
 			</section>
@@ -94,7 +94,6 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 		align-items: center;
 		justify-content: center;
 	}
-
 	h1 {
 		margin: 0;
 		color: #000000;
@@ -104,14 +103,14 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 	}
 	section {
 		display: flex;
-		margin-top: auto;
+		margin-top: min(auto, 8mm);
 	}
 	.text {
 		flex-grow: 1;
 		margin-right: 2rem;
 	}
-
-	.text p {
+	.description {
+		white-space: pre;
 		text-align: justify;
 	}
 </style>

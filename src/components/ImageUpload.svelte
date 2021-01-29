@@ -15,7 +15,7 @@
 
 
 <label>
-  Choose Image
+  Bild
   <input
     name="file-input"
     type="file"

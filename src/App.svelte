@@ -1,13 +1,11 @@
 <script>
-	// import QrCode from "svelte-qrcode"
-
 	import ImageUpload from "./components/form/ImageUpload.svelte";
-	import OptionalImage from "./components/OptionalImage.svelte";
-	import QRCode from "./components/QRCode.svelte";
-	import A4 from "./components/A4.svelte";
 	import LabeledInput from "./components/form/LabeledInput.svelte";
 	import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
 	import RadioButtons from "./components/form/RadioButtons.svelte";
+	import OptionalImage from "./components/OptionalImage.svelte";
+	import QRCode from "./components/QRCode.svelte";
+	import A4 from "./components/A4.svelte";
 
 	let title = 'Titel';
 	let price = 'CHF 1000.—';
@@ -40,7 +38,7 @@
 	</div>
 	<div id="preview">
 		<A4>
-			<OptionalImage bind:image/>
+			<!-- <OptionalImage bind:image/>
 			<section>
 				<div class="text">
 					<h2>{title}</h2>
@@ -48,7 +46,7 @@
 					<p class="description">{text || textFallback}</p>
 				</div>
 				<QRCode bind:value={link} />
-			</section>
+			</section> -->
 		</A4>
 	</div>
 </main>
@@ -61,9 +59,8 @@
 		text-align: left;
 		margin: 0;
 		padding: 0;
+		display: flex;
 		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 1fr 4fr;
 	}
 
 	:global(label){
@@ -85,14 +82,18 @@
 	#editor {
 		box-sizing: border-box;
 		height: 100vh;
+		width: 30vw;
+		/* width: 400px; */
 		padding: 20px;
+		flex-shrink: 0;
 	}
 
 	#preview {
 		background-color: #efefef;
 		border-left: 1px solid #d4d4d4;
+		flex-grow: 1;
+		flex-shrink: 1;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}

@@ -1,13 +1,16 @@
 <style>
   .A4 {
-    box-sizing: border-box;
-    width: 70vmin;
-    height: 100vmin;
+    box-sizing: border-box; 
 
-    --margin: 20px; 
-    max-width: calc(100% - (var(--margin) * 2));
-    max-height: calc(100% - (var(--margin) * 2));
-    object-fit: contain;
+
+   width: 100vmin;
+   height: 100v;
+   max-width: 100%;
+   max-height: 100%;
+   object-fit: contain;
+
+    
+
 		background-color: #ffffff;
 		-webkit-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
 		-moz-box-shadow: 0px 10px 53px -23px rgba(0,0,0,0.52);
@@ -16,5 +19,5 @@
 </style>
 
 <div class="A4">
-  <!-- <slot></slot> -->
+  <slot></slot>
 </div>

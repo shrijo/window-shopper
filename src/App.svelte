@@ -15,7 +15,7 @@
 	let textFallback = 'Hier können sie ihr Produkt beschreiben';
 
 	let image = false;
-	let link = 'https://example.com';
+	let link;
 	
 	const onPrint = () => {
 		window.print()
@@ -32,23 +32,29 @@
 			<LabeledTextarea label="Text" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
 			<!-- <LabeledInput label="QR Code" placeholder="https://example.com" bind:value={link}/> -->
-			<RadioButtons />
+			<RadioButtons bind:link/>
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
+
+		<details>
+				<summary>debug</summary>
+				{JSON.stringify({link})}
+			</details>
 	</div>
 	<div id="preview">
 		<A4>
-			<!-- <OptionalImage bind:image/>
+			<!-- <OptionalImage bind:image/> -->
 			<section>
-				<div class="text">
+				<!-- <div class="text">
 					<h2>{title}</h2>
 					<h4>{price}</h4>
 					<p class="description">{text || textFallback}</p>
-				</div>
+				</div> -->
 				<QRCode bind:value={link} />
-			</section> -->
+			</section>
 		</A4>
 	</div>
+
 </main>
 
 
@@ -82,8 +88,8 @@
 	#editor {
 		box-sizing: border-box;
 		height: 100vh;
-		width: 30vw;
-		/* width: 400px; */
+		/* width: 30vw; */
+		width: 400px;
 		padding: 20px;
 		flex-shrink: 0;
 	}

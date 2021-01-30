@@ -7,15 +7,13 @@
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
 
-	let title = 'Titel';
-	let price = 'CHF 1000.—';
+	import { link, title, subtitle } from "./stores";
 
 	let text = '';
 	let textPlaceholder = 'Produkt beschreiben';
 	let textFallback = 'Hier können sie ihr Produkt beschreiben';
 
 	let image = false;
-	let link;
 	
 	const onPrint = () => {
 		window.print()
@@ -27,18 +25,23 @@
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={title}/>
-			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={price}/>
+			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={$title}/>
+			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={$subtitle}/>
 			<LabeledTextarea label="Text" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
-			<!-- <LabeledInput label="QR Code" placeholder="https://example.com" bind:value={link}/> -->
-			<RadioButtons bind:link/>
+			<RadioButtons bind:link={$link}/>
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 
 		<details>
-				<summary>debug</summary>
-				{JSON.stringify({link})}
+				<summary>debug state</summary>
+				<code>
+					<pre>{JSON.stringify({
+						link: $link,
+						subtitle: $subtitle,
+						title: $title
+					}, null, 2)}</pre>
+				</code>
 			</details>
 	</div>
 	<div id="preview">
@@ -50,7 +53,7 @@
 					<h4>{price}</h4>
 					<p class="description">{text || textFallback}</p>
 				</div> -->
-				<QRCode bind:value={link} />
+				<QRCode />
 			</section>
 		</A4>
 	</div>
@@ -113,13 +116,5 @@
 	section {
 		display: flex;
 		margin-top: min(auto, 8mm);
-	}
-	.text {
-		flex-grow: 1;
-		margin-right: 2rem;
-	}
-	.description {
-		white-space: pre;
-		text-align: justify;
 	}
 </style>

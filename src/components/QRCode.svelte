@@ -6,8 +6,8 @@
 </svelte:head>
 
 <script>
+  import { link } from "../stores";
   import makeOutline from "../helpers/outline";
-	export let value;
   let squareSize = 300;
   let ref;
 
@@ -24,7 +24,7 @@
   };
 
   $: if (typeof QRCode !== 'undefined') {
-    update(value);
+    update($link);
   };
 </script>
 

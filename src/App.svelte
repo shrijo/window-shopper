@@ -25,21 +25,9 @@
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-			<LabeledInput
-				label="Titel"
-				placeholder="Produkt Titel"
-				bind:value={$title}
-			/>
-			<LabeledInput
-				label="Untertitel"
-				placeholder="Produkt Preis"
-				bind:value={$subtitle}
-			/>
-			<LabeledTextarea
-				label="Text"
-				placeholder="Produkt beschreiben"
-				bind:value={$text}
-			/>
+			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={$title} />
+			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={$subtitle} />
+			<LabeledTextarea label="Text" placeholder="Produkt beschreiben" bind:value={$text} />
 			<ImageUpload bind:value={image}/>
 			<RadioButtons bind:link={$link}/>
 			<button on:click={onPrint} type="button">Print!</button>

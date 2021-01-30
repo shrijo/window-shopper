@@ -3,8 +3,8 @@
     box-sizing: border-box; 
 
 
-   width: 100vmin;
-   height: 100v;
+   width: 70vmin;
+   height: 100vmin;
    max-width: 100%;
    max-height: 100%;
    object-fit: contain;

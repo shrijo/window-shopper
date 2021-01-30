@@ -17,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "marked": "^1.2.8",
     "sirv-cli": "^1.0.0",
     "svelte-qrcode": "0.0.2"
   }

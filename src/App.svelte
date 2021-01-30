@@ -1,4 +1,5 @@
 <script>
+	import marked from "marked";
 	import ImageUpload from "./components/form/ImageUpload.svelte";
 	import LabeledInput from "./components/form/LabeledInput.svelte";
 	import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
@@ -7,9 +8,8 @@
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
 
-	import { link, title, subtitle } from "./stores";
+	import { link, title, subtitle, text } from "./stores";
 
-	let text = '';
 	let textPlaceholder = 'Produkt beschreiben';
 	let textFallback = 'Hier können sie ihr Produkt beschreiben';
 
@@ -25,16 +25,28 @@
 	<div id="editor">
 		<h1>Window Shopper</h1>
 		<form>
-			<LabeledInput label="Titel" placeholder="Produkt Titel" bind:value={$title}/>
-			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={$subtitle}/>
-			<LabeledTextarea label="Text" placeholder={textPlaceholder} bind:value={text}/>
+			<LabeledInput
+				label="Titel"
+				placeholder="Produkt Titel"
+				bind:value={$title}
+			/>
+			<LabeledInput
+				label="Untertitel"
+				placeholder="Produkt Preis"
+				bind:value={$subtitle}
+			/>
+			<LabeledTextarea
+				label="Text"
+				placeholder="Produkt beschreiben"
+				bind:value={$text}
+			/>
 			<ImageUpload bind:value={image}/>
 			<RadioButtons bind:link={$link}/>
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 
 		<details>
-				<summary>debug state</summary>
+				<summary>debug</summary>
 				<code>
 					<pre>{JSON.stringify({
 						link: $link,
@@ -48,11 +60,11 @@
 		<A4>
 			<!-- <OptionalImage bind:image/> -->
 			<section>
-				<!-- <div class="text">
-					<h2>{title}</h2>
-					<h4>{price}</h4>
-					<p class="description">{text || textFallback}</p>
-				</div> -->
+				<div class="text">
+					<h2>{$title}</h2>
+					<h4>{$subtitle}</h4>
+					<p class="description">{@html marked($text)}</p>
+				</div>
 				<QRCode />
 			</section>
 		</A4>
@@ -117,4 +129,12 @@
 		display: flex;
 		margin-top: min(auto, 8mm);
 	}
+	.text {
+		flex-grow: 1;
+		margin-right: 2rem;
+	}
+	.description {
+		text-align: justify;
+	}
+
 </style>

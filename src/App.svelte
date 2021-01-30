@@ -1,12 +1,13 @@
 <script>
 	// import QrCode from "svelte-qrcode"
 
-	import ImageUpload from "./components/ImageUpload.svelte";
+	import ImageUpload from "./components/form/ImageUpload.svelte";
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
-	import LabeledInput from "./components/LabeledInput.svelte";
-import LabeledTextarea from "./components/LabeledTextarea.svelte";
+	import LabeledInput from "./components/form/LabeledInput.svelte";
+	import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
+	import RadioButtons from "./components/form/RadioButtons.svelte";
 
 	let title = 'Titel';
 	let price = 'CHF 1000.—';
@@ -32,7 +33,8 @@ import LabeledTextarea from "./components/LabeledTextarea.svelte";
 			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={price}/>
 			<LabeledTextarea label="Text" placeholder={textPlaceholder} bind:value={text}/>
 			<ImageUpload bind:value={image}/>
-			<LabeledInput label="QR Code" placeholder="https://example.com" bind:value={link}/>
+			<!-- <LabeledInput label="QR Code" placeholder="https://example.com" bind:value={link}/> -->
+			<RadioButtons />
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 	</div>

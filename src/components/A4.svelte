@@ -1,5 +1,7 @@
 <script>
-  let w, h;
+  let w,
+    h,
+    debug = true;
   let pageRatio = 210 / 297;
   let viewRatio = w / h;
   let fitHeight = pageRatio < viewRatio;
@@ -18,7 +20,9 @@
 >
   <div class="A4" class:fitHeight>
     <svg viewBox="0 0 210 297">
-      <path stroke="red" d="M0,0 L210,297" />
+      {#if debug}
+        <path stroke="red" d="M0,0 L210,297" />
+      {/if}
     </svg>
     <div class="content">
       <slot />

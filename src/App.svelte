@@ -38,18 +38,19 @@
       />
       <ImageUpload bind:value={image} />
       <QRCodeSection />
+			<Debug
+	      vars={{
+	        link: $link,
+	        subtitle: $subtitle,
+	        title: $title,
+	      }}
+	    />
       <button on:click={onPrint} type="button" class="print-button"
         >Print!</button
       >
     </form>
 
-    <Debug
-      vars={{
-        link: $link,
-        subtitle: $subtitle,
-        title: $title,
-      }}
-    />
+
   </div>
   <div id="preview">
     <A4>
@@ -75,8 +76,8 @@
     padding: 0;
     display: flex;
     margin: 0 auto;
-
     box-sizing: border-box;
+		align-items: flex-start;
   }
 
   :global(label) {
@@ -93,7 +94,7 @@
   }
   form {
     border-top: 1px solid #000000;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
   }
 
   #editor {
@@ -105,26 +106,27 @@
     /* width: 30vw; */
     width: 400px;
     flex-shrink: 0;
-    position: sticky;
-    top: 0;
+		overflow: scroll;
+		max-height: calc(100vh - 20px);
   }
 
   .print-button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     background-color: #000000;
     border: none;
     color: #ffffff;
     font-weight: 600;
     line-height: 2em;
+		margin: 10px -10px 0 -10px;
+		width: calc(100% + 20px);
   }
 
   #preview {
     flex-grow: 1;
     flex-shrink: 1;
+		height: 100vw;
   }
+
   h1 {
     padding: 0.1em 10px 0 10px;
     line-height: 2em;
@@ -145,4 +147,10 @@
   .description {
     text-align: justify;
   }
+
+	@media (orientation: portrait) {
+	  #editor {
+	    display:none;
+	  }
+	}
 </style>

@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="container"
+  class="A4--wrapper"
   bind:clientWidth={w}
   bind:clientHeight={h}
   style="--w: {0.707 * (h - 20)}px; --h: {h - 20}px"
@@ -28,7 +28,7 @@
 </div>
 
 <style>
-  .container {
+  .A4--wrapper {
     margin: 10px;
     margin-left: 0;
     height: 100%;

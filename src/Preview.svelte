@@ -25,8 +25,12 @@
 
 <style>
   section {
-    display: flex;
     margin: 5%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 67.2%;
+    left: 0;
   }
   h2 {
     font-size: calc(0.03 * var(--h));

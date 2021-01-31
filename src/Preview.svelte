@@ -24,6 +24,9 @@
 </A4>
 
 <style>
+  :global(body) {
+    font-size: calc(0.03 * var(--h));
+  }
   section {
     margin: 5%;
     position: absolute;
@@ -33,11 +36,15 @@
     left: 0;
   }
   h2 {
-    font-size: calc(0.03 * var(--h));
+    font-size: 3rem;
+  }
+  h4 {
+    font-size: 2rem;
   }
   .text {
     flex-grow: 1;
     margin-right: 2rem;
+    font-size: 1rem;
   }
   .description {
     text-align: justify;

@@ -9,12 +9,8 @@
   }
 </script>
 
-<div
-  class="A4--wrapper"
-  bind:clientWidth={w}
-  bind:clientHeight={h}
-  style="--w: {0.707 * (h - 20)}px; --h: {h - 20}px"
->
+<svelte:body style="--w: {0.707 * (h - 20)}px; --h: {h - 20}px" />
+<div class="A4--wrapper" bind:clientWidth={w} bind:clientHeight={h}>
   <div class="A4" class:fitHeight>
     <svg viewBox="0 0 210 297">
       {#if debug}

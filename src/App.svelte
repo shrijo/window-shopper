@@ -9,10 +9,6 @@
 	import A4 from "./components/A4.svelte";
 
 	import { link, title, subtitle, text } from "./stores";
-
-	let textPlaceholder = 'Produkt beschreiben';
-	let textFallback = 'Hier können sie ihr Produkt beschreiben';
-
 	let image = false;
 	
 	const onPrint = () => {

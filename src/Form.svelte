@@ -5,8 +5,7 @@
   import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
   import QRCodeSection from "./components/form/QRCodeSection.svelte";
 
-  import { link, title, subtitle, text } from "./stores";
-  let image = false;
+  import { link, title, subtitle, text, image } from "./stores";
 
   const onPrint = () => {
     window.print();
@@ -25,7 +24,7 @@
     placeholder="Produkt beschreiben"
     bind:value={$text}
   />
-  <ImageUpload bind:value={image} />
+  <ImageUpload bind:value={$image} />
   <QRCodeSection />
   <Debug
     vars={{

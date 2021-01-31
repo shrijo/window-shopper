@@ -1,14 +1,11 @@
 <script>
-  let w,
-    h,
-    debug = true;
+  let w, h, debug;
   let pageRatio = 210 / 297;
   let viewRatio = w / h;
   let fitHeight = pageRatio < viewRatio;
   $: {
     viewRatio = w / h;
     fitHeight = pageRatio < viewRatio;
-    console.log({ w, h, fitHeight });
   }
 </script>
 
@@ -38,6 +35,8 @@
   }
   .A4 {
     display: grid;
+    position: relative;
+
     width: 100%;
     background-color: #ffffff;
     -webkit-box-shadow: 0px 10px 53px -23px rgba(0, 0, 0, 0.52);
@@ -52,5 +51,8 @@
   .A4 svg,
   .A4 .content {
     grid-area: 1 / 1 / 2 / 2;
+  }
+  .content {
+    position: relative;
   }
 </style>

@@ -5,7 +5,6 @@
   import QRCode from "./components/QRCode.svelte";
 
   import { title, subtitle, text } from "./stores";
-  export let image = false;
 
   const onPrint = () => {
     window.print();
@@ -13,7 +12,7 @@
 </script>
 
 <A4>
-  <OptionalImage bind:image />
+  <OptionalImage />
   <section>
     <div class="text">
       <h2>{$title}</h2>
@@ -27,7 +26,10 @@
 <style>
   section {
     display: flex;
-    margin-top: min(auto, 8mm);
+    margin: 5%;
+  }
+  h2 {
+    font-size: calc(0.03 * var(--h));
   }
   .text {
     flex-grow: 1;

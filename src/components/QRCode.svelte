@@ -1,52 +1,40 @@
-<svelte:head>
-  <script
-    src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"
-    on:load={update}
-  ></script>
-</svelte:head>
-
 <script>
   import { link } from "../stores";
-  import makeOutline from "../helpers/outline";
-  let squareSize = 300;
-  let ref;
 
-  const update = x => {
-    ref.innerHTML = ''
+  let squareSize = 300;
+  let ref, h;
+
+  const update = (x) => {
+    ref.innerHTML = "";
     new QRCode(ref, {
       text: x,
-      width: squareSize,
-      height: squareSize,
-      colorDark : "#000000",
-      colorLight : "#ffffff",
-      correctLevel : QRCode.CorrectLevel.Q
+      width: h,
+      height: h,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.Q,
     });
   };
 
-  $: if (typeof QRCode !== 'undefined') {
+  $: if (typeof QRCode !== "undefined") {
     update($link);
-  };
+  }
 </script>
 
-<div class="container" style={makeOutline()}>
-  <div bind:this={ref}></div>
+<svelte:head
+  ><script
+    src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"
+    on:load={update}></script></svelte:head
+>
+
+<div class="container" bind:clientHeight={h}>
+  <div bind:this={ref} />
 </div>
 
 <style>
-  .container{
-    position: relative;
-  }
-  .container::after {
-    content: "🤞";
-    text-shadow: var(--outline);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 100px;
-    line-height: 300px;
-    text-align: center;
-    vertical-align: middle;
+  .container {
+    --qr-size: calc(var(--h) * 0.25);
+    width: var(--qr-size);
+    height: var(--qr-size);
   }
 </style>

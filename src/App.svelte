@@ -1,7 +1,6 @@
 <script>
   import Form from "./Form.svelte";
   import Preview from "./Preview.svelte";
-  let image = false;
 
   const onPrint = () => {
     window.print();
@@ -14,7 +13,7 @@
     <Form />
   </div>
   <div id="preview">
-    <Preview {image} />
+    <Preview />
   </div>
 </main>
 

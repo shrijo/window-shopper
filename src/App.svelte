@@ -1,12 +1,13 @@
 <script>
 	import marked from "marked";
+	import A4 from "./components/A4.svelte";
+	import Debug from "./components/debug.svelte";
 	import ImageUpload from "./components/form/ImageUpload.svelte";
 	import LabeledInput from "./components/form/LabeledInput.svelte";
 	import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
-	import QRCodeSection from "./components/form/QRCodeSection.svelte";
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
-	import A4 from "./components/A4.svelte";
+	import QRCodeSection from "./components/form/QRCodeSection.svelte";
 
 	import { link, title, subtitle, text } from "./stores";
 	let image = false;
@@ -29,20 +30,16 @@
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 
-		<details>
-				<summary>debug</summary>
-				<code>
-					<pre>{JSON.stringify({
-						link: $link,
-						subtitle: $subtitle,
-						title: $title
-					}, null, 2)}</pre>
-				</code>
-			</details>
+		<Debug vars={{
+      link: $link,
+      subtitle: $subtitle,
+      title: $title
+    }} />
+
 	</div>
 	<div id="preview">
 		<A4>
-			<!-- <OptionalImage bind:image/> -->
+			<OptionalImage bind:image/>
 			<section>
 				<div class="text">
 					<h2>{$title}</h2>

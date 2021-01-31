@@ -27,14 +27,13 @@
 			<LabeledTextarea label="Text" placeholder="Produkt beschreiben" bind:value={$text} />
 			<ImageUpload bind:value={image}/>
 			<QRCodeSection />
+			<Debug vars={{
+	      link: $link,
+	      subtitle: $subtitle,
+	      title: $title
+	    }} />
 			<button on:click={onPrint} type="button" class="print-button">Print!</button>
 		</form>
-
-		<Debug vars={{
-      link: $link,
-      subtitle: $subtitle,
-      title: $title
-    }} />
 
 	</div>
 	<div id="preview">
@@ -63,8 +62,8 @@
 		padding: 0;
 		display: flex;
 		margin: 0 auto;
-
 		box-sizing: border-box;
+		align-items: flex-start;
 	}
 
 	:global(label){
@@ -81,7 +80,7 @@
 	}
 	form{
 		border-top: 1px solid #000000;
-		padding: 10px;
+		padding: 10px 10px 0 10px;
 	}
 
 	#editor {
@@ -95,18 +94,19 @@
 		flex-shrink: 0;
 		position: sticky;
 		top: 0;
+		overflow: scroll;
+		max-height: calc(100vh - 20px);
 	}
 
 	.print-button{
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
+		width: calc(100% + 20px);
+		margin: 0 -10px;
 		background-color: #000000;
 		border: none;
 		color: #ffffff;
 		font-weight: 600;
 		line-height: 2em;
+		margin-top: 20px;
 	}
 
 	#preview {

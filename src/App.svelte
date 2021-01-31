@@ -3,7 +3,7 @@
 	import ImageUpload from "./components/form/ImageUpload.svelte";
 	import LabeledInput from "./components/form/LabeledInput.svelte";
 	import LabeledTextarea from "./components/form/LabeledTextarea.svelte";
-	import RadioButtons from "./components/form/RadioButtons.svelte";
+	import QRCodeSection from "./components/form/QRCodeSection.svelte";
 	import OptionalImage from "./components/OptionalImage.svelte";
 	import QRCode from "./components/QRCode.svelte";
 	import A4 from "./components/A4.svelte";
@@ -25,7 +25,7 @@
 			<LabeledInput label="Untertitel" placeholder="Produkt Preis" bind:value={$subtitle} />
 			<LabeledTextarea label="Text" placeholder="Produkt beschreiben" bind:value={$text} />
 			<ImageUpload bind:value={image}/>
-			<RadioButtons bind:link={$link}/>
+			<QRCodeSection />
 			<button on:click={onPrint} type="button">Print!</button>
 		</form>
 

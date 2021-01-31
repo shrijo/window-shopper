@@ -1,16 +1,14 @@
 <script>
 	import LabeledInput from "./LabeledInput.svelte";
+	import { link } from "../../stores";
 
-
-
-	export let link;
 	let type = 1;
 	let webLink = 'https://example.com'
 	let address = 'jonas@gmail.com';
-	$: link = (type === 1) ? webLink : `mailto://${address}`;
-
+	$: $link = (type === 1) ? webLink : `mailto://${address}`;
 </script>
 
+<h4>QR Code</h4>
 <section>
 	<input name="web" id="web" type=radio bind:group={type} value={1}>
 	<label for="web">Web Link</label>

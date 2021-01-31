@@ -11,7 +11,7 @@
 
 	import { link, title, subtitle, text } from "./stores";
 	let image = false;
-	
+
 	const onPrint = () => {
 		window.print()
 	};
@@ -27,7 +27,7 @@
 			<LabeledTextarea label="Text" placeholder="Produkt beschreiben" bind:value={$text} />
 			<ImageUpload bind:value={image}/>
 			<QRCodeSection />
-			<button on:click={onPrint} type="button">Print!</button>
+			<button on:click={onPrint} type="button" class="print-button">Print!</button>
 		</form>
 
 		<Debug vars={{
@@ -63,6 +63,8 @@
 		padding: 0;
 		display: flex;
 		margin: 0 auto;
+
+		box-sizing: border-box;
 	}
 
 	:global(label){
@@ -78,21 +80,36 @@
 		border: none;
 	}
 	form{
-		margin-top: 20px;
+		border-top: 1px solid #000000;
+		padding: 10px;
 	}
-	
+
 	#editor {
+		margin: 10px;
+		border: 1px solid #000000;
+		z-index: 10;
+		background: white;
 		box-sizing: border-box;
-		height: 100vh;
 		/* width: 30vw; */
 		width: 400px;
-		padding: 20px;
 		flex-shrink: 0;
+		position: sticky;
+		top: 0;
+	}
+
+	.print-button{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: #000000;
+		border: none;
+		color: #ffffff;
+		font-weight: 600;
+		line-height: 2em;
 	}
 
 	#preview {
-		background-color: #efefef;
-		border-left: 1px solid #d4d4d4;
 		flex-grow: 1;
 		flex-shrink: 1;
 		display: flex;
@@ -100,11 +117,13 @@
 		justify-content: center;
 	}
 	h1 {
+		padding: 0.1em 10px 0 10px;
+		line-height: 2em;
 		margin: 0;
 		color: #000000;
 		text-transform: uppercase;
-		font-size: 2em;
-		font-weight: 600;
+		font-size: 1.3em;
+		font-weight: 1000;
 	}
 	section {
 		display: flex;

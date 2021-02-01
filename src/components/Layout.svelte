@@ -1,14 +1,16 @@
 <script>
   import marked from "marked";
-  import QRCode from "qrcode-svg";
-  import { title, subtitle, text, image, qrContainer, link } from "../stores";
-  let ref;
+  import { title, subtitle, text, image, link } from "../stores";
+  import ImagePlaceholder from "./ImagePlaceholder.svelte";
+  import LibLoader from "./LibLoader.svelte";
+  let qrClass, qrReady, qrSVG;
   let m = 8;
   let h = 297;
   let w = 210;
   let a = w - m * 2;
   let b = h - m * 3 - a;
   let c = m + a - b;
+
   let imageProps = {
     x: m,
     y: m,
@@ -16,12 +18,13 @@
     height: a,
     preserveAspectRatio: "xMidYMid slice",
   };
+
   let qrProps = {
-    x: c,
-    y: a + m * 2,
+    transform: `translate(${c}, ${a + m * 2})`,
     width: b,
     height: b,
   };
+
   let textProps = {
     x: m,
     y: a + m * 2,
@@ -30,15 +33,22 @@
     "font-size": 10,
   };
 
-  // $: setQR(ref, $link);
+  const init = () => {
+    qrClass = QRCode;
+    qrReady = true;
+  };
+
+  $: if (qrReady) {
+    qrSVG = new qrClass({
+      content: $link,
+      padding: 0,
+      ...qrProps,
+    }).svg();
+  }
 </script>
 
-<svelte:head
-  ><script
-    src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"
-    on:load={() => {QR.init();}}></script></svelte:head
->
-<!-- svelte-ignore component-name-lowercase -->
+<LibLoader url="js/qrcode.js" on:loaded={init} />
+
 <svg
   class="A4"
   viewBox="0 0 210 297"
@@ -47,11 +57,14 @@
 >
   <rect {...imageProps} fill="green" />
   <rect x="0" y="0" width="210" height="297" fill="white" />
-  <image href={$image} {...imageProps} />
-  <g class="QRContainer" {...qrProps} />
-
-  <!-- <rect {...qrProps} fill="red" class="QR" /> -->
-
+  <!-- svelte-ignore component-name-lowercase -->
+  {#if $image}
+    <image href={$image} {...imageProps} />
+  {:else}
+    <ImagePlaceholder {...imageProps} />
+  {/if}
+  <!-- svelte-ignore component-name-lowercase -->
+  <g {...qrProps}>{@html qrSVG}</g>
   <foreignObject {...textProps}>
     <body xmlns="http://www.w3.org/1999/xhtml">
       <h1>{$title}</h1>
@@ -68,6 +81,6 @@
     width: 100%;
   }
   svg body {
-    background-color: peachpuff;
+    background-color: white;
   }
 </style>

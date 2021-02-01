@@ -1,6 +1,7 @@
 <script>
   import marked from "marked";
   import A4 from "./components/A4.svelte";
+  import Layout from "./components/Layout.svelte";
   import OptionalImage from "./components/OptionalImage.svelte";
   import QRCode from "./components/QRCode.svelte";
 
@@ -11,7 +12,9 @@
   };
 </script>
 
-<A4>
+<Layout {$title} />
+
+<!-- <A4>
   <OptionalImage />
   <section>
     <div class="text">
@@ -21,10 +24,9 @@
     </div>
     <QRCode />
   </section>
-</A4>
-
+</A4> -->
 <style>
-  :global(body) {
+  /* :global(body) {
     font-size: calc(0.03 * var(--h));
   }
   section {
@@ -48,5 +50,5 @@
   }
   .description {
     text-align: justify;
-  }
+  } */
 </style>

@@ -59,6 +59,9 @@
     flex-grow: 1;
     flex-shrink: 1;
     height: 100vh;
+    padding: 10px;
+    padding-left: 0;
+    box-sizing: border-box;
   }
 
   h1 {

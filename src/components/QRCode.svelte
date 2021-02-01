@@ -1,10 +1,10 @@
 <script>
-  import { link } from "../stores";
+  import { link, qrContainer } from "../stores";
   let ref, h;
 
   const update = (x) => {
-    ref.innerHTML = "";
-    new QRCode(ref, {
+    $qrContainer.innerHTML = "";
+    new QRCode($qrContainer, {
       text: x,
       width: 300,
       height: 300,
@@ -14,7 +14,7 @@
     });
   };
 
-  $: if (typeof QRCode !== "undefined") {
+  $: if (typeof QRCode !== "undefined" && $qrContainer) {
     update($link);
   }
 </script>
@@ -25,9 +25,11 @@
     on:load={update}></script></svelte:head
 >
 
-<div class="container" bind:this={ref} />
-
+<!-- <div class="container" bind:this={$qrContainer} /> -->
 <style>
+  :global(canvas) {
+    display: none;
+  }
   :global(.container img) {
     height: 100%;
     position: absolute;

@@ -63,7 +63,6 @@
   {:else}
     <ImagePlaceholder {...imageProps} />
   {/if}
-  <!-- svelte-ignore component-name-lowercase -->
   <g {...qrProps}>{@html qrSVG}</g>
   <foreignObject {...textProps}>
     <body xmlns="http://www.w3.org/1999/xhtml">

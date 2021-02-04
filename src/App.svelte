@@ -1,6 +1,6 @@
 <script>
-  import Form from "./Form.svelte";
-  import Preview from "./Preview.svelte";
+  import Form from "./components/Form.svelte";
+  import Paper from "./components/Paper.svelte";
 
   const onPrint = () => {
     window.print();
@@ -13,7 +13,7 @@
     <Form />
   </div>
   <div id="preview">
-    <Preview />
+    <Paper />
   </div>
 </main>
 
@@ -28,19 +28,6 @@
     margin: 0 auto;
     box-sizing: border-box;
     align-items: flex-start;
-  }
-
-  :global(label) {
-    font-size: 0.8em;
-    color: #a1a1a1;
-    margin-bottom: 3px;
-  }
-
-  :global(input),
-  :global(textarea) {
-    width: 100%;
-    background-color: #efefef;
-    border: none;
   }
 
   #editor {

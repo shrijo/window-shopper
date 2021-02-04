@@ -4,13 +4,19 @@
   font-weight: 100 1000;
 }
 
+:root {
+  --input-bg: #efefef;
+}
+
 html,
 body {
   position: relative;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background-color: #cfefcf;
+  /* https://www.heropatterns.com/ */
+  background-color: #dbe5dd;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
   overflow: hidden;
 }
 
@@ -41,21 +47,26 @@ a:visited {
 
 label {
   display: block;
+  font-size: 0.8em;
+  color: #a1a1a1;
+  margin-bottom: 3px;
 }
 
 input,
 button,
 select,
 textarea {
+  background-color: var(--input-bg);
+  border-radius: 2px;
+  border: none;
+  box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
-  -webkit-padding: 0.4em 0;
-  padding: 0.4em;
   margin: 0 0 0.5em 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  padding: 0.4em;
+  -webkit-padding: 0.4em 0;
   resize: vertical;
+  width: 100%;
 }
 
 input:disabled {
@@ -66,7 +77,6 @@ button {
   color: #333;
   background-color: #f4f4f4;
   outline: none;
-  margin: 0;
 }
 
 button:disabled {
@@ -90,6 +100,17 @@ h4 {
 
 h1 {
   line-height: 1em;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 @media print {

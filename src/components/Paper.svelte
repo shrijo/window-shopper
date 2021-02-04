@@ -4,7 +4,7 @@
   import ImagePlaceholder from "./ImagePlaceholder.svelte";
   import LibLoader from "./LibLoader.svelte";
   let qrClass, qrReady, qrSVG;
-  let m = 8;
+  let m = 12;
   let h = 297;
   let w = 210;
   let a = w - m * 2;
@@ -30,7 +30,7 @@
     y: a + m * 2,
     width: a - b - m,
     height: b,
-    "font-size": 10,
+    style: "font-size: 4.23333", // 4.23333mm = 12pt
   };
 
   const init = () => {
@@ -78,8 +78,11 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+    border: 1px solid black;
   }
+
   svg body {
-    background-color: white;
+    background-color: white !important;
+    background-image: none;
   }
 </style>

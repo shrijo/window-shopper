@@ -102,6 +102,7 @@ npm run build
 surge public my-project.surge.sh
 ```
 
-## SH kommentare
+## links
 
-- mues das eigentlich würklich alles so uf window shopper usgrichtet sii? dunkt mich etz wie die falsch herangehenswiis. due das doch mal e chli grösser denke
+- [icons](https://ibm.github.io/carbon-icons-svelte/)
+- [background](https://www.heropatterns.com/)

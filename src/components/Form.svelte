@@ -32,6 +32,8 @@
     oder keine Zeit für Grafik haben, in diesen Zeiten. Geld wird unsereseits
     keines damit verdient. Wenn ihr aber Feedback oder Wünsche habt könnt ihr
     euch hier melden: <a href="mailto:dudes@example.com">dudes@example.com</a>
+    <br />
+    <h2>&forall;</h2>
   </Modal>
   <br />
   <Modal label="Datenschutz">

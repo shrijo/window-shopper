@@ -45,6 +45,13 @@
       ...qrProps,
     }).svg();
   }
+
+  const outline = (t) => {
+    return {
+      d: `M${0.5 * t},${0.5 * t} H${w - 0.5 * t} V${h - 0.5 * t} H${0.5 * t} Z`,
+      "stroke-width": t,
+    };
+  };
 </script>
 
 <LibLoader url="js/qrcode.js" on:loaded={init} />
@@ -55,8 +62,8 @@
   preserveAspectRatio="xMinYMin meet"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <rect {...imageProps} fill="green" />
   <rect x="0" y="0" width="210" height="297" fill="white" />
+  <path {...outline(0.25)} stroke="black" fill="none" class="screen-only" />
   <!-- svelte-ignore component-name-lowercase -->
   {#if $image}
     <image href={$image} {...imageProps} />
@@ -78,11 +85,25 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    border: 1px solid black;
   }
 
   svg body {
+    padding: 0.2em 0;
     background-color: white !important;
     background-image: none;
+  }
+
+  :global(svg ul) {
+    padding-left: 1em;
+    list-style: none;
+  }
+  :global(svg li::before) {
+    content: "\2014";
+    margin-right: 0.4em;
+  }
+  @media print {
+    .screen-only {
+      display: none;
+    }
   }
 </style>

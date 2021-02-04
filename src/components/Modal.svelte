@@ -53,7 +53,8 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(219, 229, 221, 0.7);
+    background-color: var(--pattern-bg);
+    opacity: 0.7;
     z-index: 1000;
   }
 </style>
